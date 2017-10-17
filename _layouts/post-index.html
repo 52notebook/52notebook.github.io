@@ -33,14 +33,14 @@
   {{ content }}
 </div><!-- /#main -->
 
+{% include disqus_comments.html %}
+
+
 <div class="footer-wrapper">
   <footer role="contentinfo">
     {% include footer.html %}
   </footer>
 </div><!-- /.footer-wrapper -->
-
-{% disqus_comments.html %}
-
 {% include scripts.html %}          
 
 </body>
