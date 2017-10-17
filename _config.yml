@@ -2,7 +2,8 @@
 
 title:            February
 description:      Describe your website here.
-#disqus_shortname: 
+disqus_shortname: 52notebook
+comments:         true
 reading_time:     true
 words_per_minute: 400
 # Your site's domain goes here (eg: https://mmistakes.github.io, http://yourdomain.com, etc)
