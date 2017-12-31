@@ -2,8 +2,8 @@
 layout: post
 title: A Neural Attention Model for Sentence Summarization
 description: "论文利用`local attention mechanism`基于`input sentence`建模生成摘要的每一个词。"
-modified: 2017-12-31T18:00:45-04:00
-tags: [Attention Model, ANN, Sentence Summarization, Language Model]
+modified: 2017-12-31T17:00:45-04:00
+tags: [ANN, RNN, 梯度, 梯度爆炸]
 ---
 
 
