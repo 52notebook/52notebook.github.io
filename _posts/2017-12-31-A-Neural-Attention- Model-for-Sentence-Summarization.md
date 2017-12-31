@@ -1,3 +1,12 @@
+---
+layout: post
+title: 你需要了解的梯度爆炸
+description: "在神经网络(RNN)中，误差梯度的作用是用来以合适的方向和合适大小更新网络结构权重值。"
+modified: 2017-12-31T17:00:45-04:00
+tags: [ANN, RNN, 梯度, 梯度爆炸]
+---
+
+
 - 思想
     - 论文利用`local attention mechanism`基于`input sentence`建模生成摘要的每一个词。
 - 该摘要类型: `Abstractive `而非`extractive`。
