@@ -11,20 +11,17 @@ tags: [ANN, RNN, 梯度, 梯度爆炸]
     - 论文利用`local attention mechanism`基于`input sentence`建模生成摘要的每一个词。
 - 该摘要类型: `Abstractive `而非`extractive`。
 - 模型score函数
-```math
-s(x, y) \approx \sum_{i=0}^{N-1}g(y_{i+1}, x, y_c)
-```
+
+$$s(x, y) \approx \sum_{i=0}^{N-1}g(y_{i+1}, x, y_c)$$
+
 `$N$`是Output length，论文假定是固定的，且预先设定的。
 `y_c`是大小的`$C$`的词窗口，计算如下:
-```math
-y_c = [y_{i-C+1}, ...y_{i}]
-```
+
+$$y_c = [y_{i-C+1}, ...y_{i}]$$
+
 `$g$`函数常用`conditional log probability`，因此`$s(x,y)$`可用以下表示
-```math
-s(X, Y) = log(Y|X; \theta) \approx \sum_{i=0}^{N-1}log(Y_{i+1}, X, y_c)
 
-
-```
+$$s(X, Y) = log(Y|X; \theta) \approx \sum_{i=0}^{N-1}log(Y_{i+1}, X, y_c)$$
 - 语言模型
 
 `$log(Y|X; \theta)$`是条件语言模型，核心任务是计算下一个词的概率分布。
@@ -36,13 +33,13 @@ s(X, Y) = log(Y|X; \theta) \approx \sum_{i=0}^{N-1}log(Y_{i+1}, X, y_c)
 
 Beigio提出的经典神经网络语言模型如下:
 
-```math
-p(y_{i+1}|y_c,X;\theta) \quad \infty \quad exp(Vh + W_{enc(X,y_c)})
 
-\hat y_c = [Ey_{i-C+1},....Ey_{i}]
+$$p(y_{i+1}|y_c,X;\theta) \quad \infty \quad exp(Vh + W_{enc(X,y_c)})$$
 
-h = tanh(U \hat y_c)
-```
+$$\hat y_c = [Ey_{i-C+1},....Ey_{i}]$$
+
+$$h = tanh(U \hat y_c)$$
+
 
 
 
@@ -67,18 +64,17 @@ h = tanh(U \hat y_c)
 
 - Attention Encoder
 
-```math
 
-enc(X,y_c) = p^{T}x^{-}
 
-p \quad \infty \quad exp(\hat x P \hat y_c')
+$$enc(X,y_c) = p^{T}x^{-}$$
 
-\hat x = [Fx_1,...,Fx_M]
+$$p \quad \infty \quad exp(\hat x P \hat y_c')$$
 
-y_c' = [G_{y_{i-C+1}},...,G_{y_i}]
+$$\hat x = [Fx_1,...,Fx_M]$$
 
-x^{-}_{i} = \sum_{q=i-Q}^{i+Q} \hat x_i / Q
-```
+$$y_c' = [G_{y_{i-C+1}},...,G_{y_i}]$$
+
+$$x^{-}_{i} = \sum_{q=i-Q}^{i+Q} \hat x_i / Q$$
 
 `$P$`是`input embedding matrix`与`context matrix`间映射形成的新的权重矩阵
 
