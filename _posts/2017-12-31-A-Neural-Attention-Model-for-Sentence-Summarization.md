@@ -19,7 +19,7 @@ $$s(x, y) \approx \sum_{i=0}^{N-1}g(y_{i+1}, x, y_c)$$
 
 $$y_c = [y_{i-C+1}, ...y_{i}]$$
 
-`$g$`函数常用`conditional log probability`，因此`$s(x,y)$`可用以下表示
+`$g$`函数常用`conditional log probability`，因此`$s(x,y)$`可用以下表示:
 
 $$s(X, Y) = log(Y|X; \theta) \approx \sum_{i=0}^{N-1}log(Y_{i+1}, X, y_c)$$
 
