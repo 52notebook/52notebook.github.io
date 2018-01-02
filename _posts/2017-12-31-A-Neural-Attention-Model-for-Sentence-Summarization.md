@@ -22,6 +22,7 @@ $$y_c = [y_{i-C+1}, ...y_{i}]$$
 `$g$`函数常用`conditional log probability`，因此`$s(x,y)$`可用以下表示
 
 $$s(X, Y) = log(Y|X; \theta) \approx \sum_{i=0}^{N-1}log(Y_{i+1}, X, y_c)$$
+
 - 语言模型
 
 `$log(Y|X; \theta)$`是条件语言模型，核心任务是计算下一个词的概率分布。
