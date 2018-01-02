@@ -79,7 +79,7 @@ $$x^{-}_{i} = \sum_{q=i-Q}^{i+Q} \hat x_i / Q$$
 
 $$P$$是**input embedding matrix**与**context matrix**间映射形成的新的权重矩阵
 
-$$F$$是**word \quad embedding**矩阵
+$$F$$是**word embedding**矩阵
 
 $$G$$是$$context \quad embedding$$
 
