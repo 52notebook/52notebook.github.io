@@ -33,6 +33,14 @@ image:
       <h1 class="entry-title"><a href="{{ site.url }}{{ post.url }}" rel="bookmark" title="{{ post.title }}" itemprop="url">{{ post.title }}</a></h1>
     {% endif %}
   </header>
+
+  <hr>
+   {{ post.excerpt }}   
+   <p><h3>
+   <a href="{{ post.url }}">ReadMore &raquo;</a>
+   </h3></p>
+<hr>
+
   <div class="entry-content">
     {{ post.content }}
   </div><!-- /.entry-content -->

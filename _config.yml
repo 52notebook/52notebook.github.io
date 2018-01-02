@@ -47,6 +47,8 @@ future:      false  # publish future dated posts --  true, false (default)
 highlighter: rouge
 markdown:    kramdown
 
+excerpt_separator: "<!-- more -->"
+
 gems:
   - jekyll-sitemap
   - jekyll-paginate

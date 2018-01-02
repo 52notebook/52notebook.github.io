@@ -11,7 +11,7 @@ tags: [ANN, RNN, 梯度, 梯度爆炸]
     - 论文利用**local attention mechanism**基于**input sentence**建模生成摘要的每一个词。
 - 该摘要类型: **Abstractive **而非**extractive**。
 - 模型score函数
-
+<!-- more -->
 $$s(x, y) \approx \sum_{i=0}^{N-1}g(y_{i+1}, x, y_c)$$
 
 **N**是Output length，论文假定是固定的，且预先设定的。
