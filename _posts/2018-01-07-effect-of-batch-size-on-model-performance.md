@@ -2,7 +2,7 @@
 layout: post
 title: MiniBatch size对模型性能的影响
 description: "MiniBatch size既能提高数据并行化处理效率，又能影响模型性能，可见设置一个合适的batch size的重要性。"
-modified: 2018-01-08T01:00:45-04:00
+modified: 2018-01-07T22:00:45-04:00
 tags: [SGD, MiniBatch, 性能优化]
 ---
 
