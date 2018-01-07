@@ -11,17 +11,17 @@ tags: [SGD, MiniBatch, 性能优化]
 
 神经网络训练问题是**非凸优化**的重要内容，可用以下公式表示:
 
-```math
+$$
 
 min_{x \in R^n}  f(x) := \frac{1}{M}\sum_{i=1}^Mf_i(x)
-```
+$$
 <!-- more -->
 
 使用**SGD**或者其变异形式方法最下化损失函数。多次迭代最小化损失函数f:
 
-```math
+$$
 x_{k+1} = x_k - \alpha_k(\frac{1}{|B_k|}\sum\nabla f_i(x_k))
-```
+$$
 
 `$B_k$`是batch sample，`$\alpha_k$`是第`$k$`步的步长。
 这种优化方法称为带有噪音的**SGD**(通常，我们提到的**SGD**都是指**MiniBatch SGD**)。
@@ -56,16 +56,16 @@ x_{k+1} = x_k - \alpha_k(\frac{1}{|B_k|}\sum\nabla f_i(x_k))
 
 
 附:
-```math
+$$
 r_{expect \space risk} = \int l(h(x;w),y) \space dP(x,y) \space = E[\space l(h(x;w),y) \space dP(x,y)]
-```
+$$
 `$P(x,y)$`是输入与输出数据间的真实概率分布关系。
 
 然而，在实际应用中，目标函数简化成:
 
-```math
+$$
 r_{empiriral \space risk} = \frac{1}{n}\sum_{i=1}^nl(h(x_i;w),y_i) 
-```
+$$
 > 引用 http://www.deeplearningbook.org/contents/optimization.html(chapter 8)
 >
 > Optimization Methods for Large-Scale Machine Learning(p-14)
