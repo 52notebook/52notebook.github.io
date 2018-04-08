@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 常用模型正则化方法
-description: "**权重正则化**、**结构正则化**和 **Dropout**是有效解决过拟合问 题的常见手段。"
+description: "权重正则化、结构正则化和Dropout是有效解决过拟合问 题的常见手段。"
 modified: 2018-04-07T17:00:45-04:00
 tags: [正则化, Dropout, 优化]
 ---
