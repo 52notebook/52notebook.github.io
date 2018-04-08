@@ -43,7 +43,7 @@ L1正则化也是被广泛应用的避免模型过拟合的方法。它是在损
 
 它的思想是将复杂的模型结构分解为简单的结构。有两种实现方式:一种是先提取特征,再进行结构分解;另一种方法是仅分解输出序列的结构, 保留输入序列的信息。
 
-![结构化分解](https://note.youdao.com/yws/public/resource/645c7ef0f51ed836661b0eb73a4e7366/xmlnote/71014DCD634A46B098849DD7BA361ABA/7148)
+![结构化分解](https://note.youdao.com/yws/public/resource/645c7ef0f51ed836661b0eb73a4e7366/xmlnote/65153A51F23944019159A552E162C5A7/7216)
 
 
 
@@ -56,7 +56,7 @@ L1正则化也是被广泛应用的避免模型过拟合的方法。它是在损
 
 Dropout思想也较为容易理解，在模型训练阶 段,部分神经元不参与前向和后向传递,通过随机减少参数的方法来减低模型的复杂度,减少模型过拟合的风险。
 
-![Dropout](https://note.youdao.com/yws/public/resource/645c7ef0f51ed836661b0eb73a4e7366/xmlnote/0A3C0D402E5D401DAB783B1CE43AC4A3/7171)
+![Dropout](https://note.youdao.com/yws/public/resource/645c7ef0f51ed836661b0eb73a4e7366/xmlnote/C418277E2E4A4EACA29DD6711A0FA974/7219)
 
 
 #### 总结
