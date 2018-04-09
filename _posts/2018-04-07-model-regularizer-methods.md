@@ -45,6 +45,7 @@ L1正则化也是被广泛应用的避免模型过拟合的方法。它是在损
 
 ![结构化分解](https://note.youdao.com/yws/public/resource/39917a3265e46c3dd4b7d12bc8f67663/xmlnote/WEBRESOURCE6a35288f30300674a2553e2734e6daeb/7232)
 
+![结构化分解](/images/00/dropout.jpeg)
 
 
 
