@@ -43,7 +43,6 @@ L1正则化也是被广泛应用的避免模型过拟合的方法。它是在损
 
 它的思想是将复杂的模型结构分解为简单的结构。有两种实现方式:一种是先提取特征,再进行结构分解;另一种方法是仅分解输出序列的结构, 保留输入序列的信息。
 
-![结构化分解](https://note.youdao.com/yws/public/resource/39917a3265e46c3dd4b7d12bc8f67663/xmlnote/WEBRESOURCE6a35288f30300674a2553e2734e6daeb/7232)
 
 ![结构化分解](/images/00/regularizer0407.jpeg)
 
