@@ -32,28 +32,25 @@ LSTM模型是RNN的一种变种，它是把RNN模型隐藏层状态的更新替�
 
 
 
-$$$
-input \space gate: \space \space  i_t = \sigma(W^{(i)}xt +\space U^{i}h_{t-1})
+$$input \space gate: \space \space  i_t = \sigma(W^{(i)}xt +\space U^{i}h_{t-1})$$
+
+$$forget \space gate: \space \space f_t= \sigma(W^{f}x_t \space + U^{f}h_{t-1})$$
 
 
-forget \space gate: \space \space f_t= \sigma(W^{f}x_t \space + U^{f}h_{t-1})
+$$output \space gate: \space \space o_t = \sigma(W^{o}x_t \space + U^{o}h_{t-1})$$
 
 
-output \space gate: \space \space o_t = \sigma(W^{o}x_t \space + U^{o}h_{t-1})
+$$new \space memry  \space cell: \space \space \tilde{c_{t}} = tanh(W^{c}x_t \space + U^{c}h_{t-1})$$
 
 
-new \space memry  \space cell: \space \space \tilde{c_{t}} = tanh(W^{c}x_t \space + U^{c}h_{t-1})
+$$final \space memry \space cell: \space \space c_t = f_t c_{t-1} + i_t \tilde{c_{t}}$$
 
 
-final \space memry \space cell: \space \space c_t = f_t c_{t-1} + i_t \tilde{c_{t}}
+$$h_t = o_t \cdot tanh(c_t)$$
 
 
-h_t = o_t \cdot tanh(c_t)
+$$y_t = o_t \cdot tanh(c_t)$$
 
-
-y_t = o_t \cdot tanh(c_t)
-
-$$$
 
 **LSTM图详解1**
 ![LSTM图详解](http://p71cwk72x.bkt.clouddn.com/18-5-19/72824696.jpg)
@@ -69,9 +66,12 @@ $$\sigma$$ 表示sigmoid函数，$$i$$、$$f$$、$$o$$、$$c$$分别表示输入
 
 
 ##### 2、CRF Network
+
 在标签推理时有两种利用相邻标签信息的方式，一种是在每一时刻预测标签的分布并解码最优标签序列；另一种是替代单一标签使用句子级全局信息的预测标签，也就是CRF网络。
 
+
 CRF在训练时，利用训练数据集通过极大似然估计或者正则化的极大似然估计得到条件概率模型$$\hat{P}(Y|X)$$；在预测时，给定输入序列x,求出条件概率$$\hat{P}(y|x)$$最大输出序列$$\hat{y}$$。
+
 
 **CRF结构图2**
 
@@ -95,9 +95,7 @@ BiLSTM模型既能够能够利用past input feature 和future input feature，�
 $$A_{ij}$$值越大，表明由$$i$$标签转移到$$j$$标签可能性越大。那么沿$$[i]^T_1$$标签路径句子$$[x]^T_1$$评分是等于转移矩阵和神经网络输出之和。
 
 
-$$
-s([x_1]^T + [i]^T_1 + \tilde \theta) = \sum^T_{t=1}([A]_{i}_{t-1} \space + [f_\theta]_{[i]_{t}},t)
-$$
+$$s([x_1]^T + [i]^T_1 + \tilde \theta) = \sum^T_{t=1}([A]_{i}_{t-1} \space + [f_\theta]_{[i]_{t}},t)$$
 
 
 
