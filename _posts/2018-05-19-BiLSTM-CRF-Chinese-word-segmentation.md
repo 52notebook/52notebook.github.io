@@ -35,43 +35,31 @@ tags: [LSTM, RNN, BiLSTM, CRF, 中文分词]
 **RNN图解**
 ![RNN模型](http://p71cwk72x.bkt.clouddn.com/18-5-19/65738414.jpg)
 
+
+LSTM模型是RNN的一种变种，它是把RNN模型隐藏层状态的更新替换成使用特定结构的记忆单元的处理。结果，LSTM模型能更好地处理长时依赖问题。
+
+
 $$
 \begin{align*}
 input \space gate: \space \space  i_t = \sigma(W^{(i)}xt +\space U^{i}h_{t-1})
 \\
 forget \space gate: \space \space f_t= \sigma(W^{f}x_t \space + U^{f}h_{t-1})
+\\
+output \space gate: \space \space o_t = \sigma(W^{o}x_t \space + U^{o}h_{t-1})
+\\
+new \space memry  \space cell: \space \space \tilde{c_{t}} = tanh(W^{c}x_t \space + U^{c}h_{t-1})
+\\
+final \space memry \space cell: \space \space c_t = f_t c_{t-1} + i_t \tilde{c_{t}}
+\\
+h_t = o_t \cdot tanh(c_t)
+\\
+y_t = o_t \cdot tanh(c_t)
 \end{align*}
 $$
 
 
-LSTM模型是RNN的一种变种，它是把RNN模型隐藏层状态的更新替换成使用特定结构的记忆单元的处理。结果，LSTM模型能更好地处理长时依赖问题。
-
-
-
-$$input \space gate: \space \space  i_t = \sigma(W^{(i)}xt +\space U^{i}h_{t-1})$$
-
-$$forget \space gate: \space \space f_t= \sigma(W^{f}x_t \space + U^{f}h_{t-1})$$
-
-
-$$output \space gate: \space \space o_t = \sigma(W^{o}x_t \space + U^{o}h_{t-1})$$
-
-
-$$new \space memry  \space cell: \space \space \tilde{c_{t}} = tanh(W^{c}x_t \space + U^{c}h_{t-1})$$
-
-
-$$final \space memry \space cell: \space \space c_t = f_t c_{t-1} + i_t \tilde{c_{t}}$$
-
-
-$$h_t = o_t \cdot tanh(c_t)$$
-
-
-$$y_t = o_t \cdot tanh(c_t)$$
-
-
 **LSTM图详解1**
 ![LSTM图详解](http://p71cwk72x.bkt.clouddn.com/18-5-19/72824696.jpg)
-
-
 
 
 $$\sigma$$ 表示sigmoid函数，$$i$$、$$f$$、$$o$$、$$c$$分别表示输入门、忘记门、输出门、记忆单元。可以看出，当忘记门$$f_t$$接近0时，表示忽略之前的记忆单元信息，只会把当前时刻候补记忆单元作为输入。
@@ -113,17 +101,17 @@ BiLSTM模型既能够能够利用past input feature 和future input feature，�
 $$A_{ij}$$值越大，表明由$$i$$标签转移到$$j$$标签可能性越大。那么沿$$[i]^T_1$$标签路径句子$$[x]^T_1$$评分是等于转移矩阵和神经网络输出之和。
 
 $$s([x]_1^T + [i]^T_1 + \tilde \theta) = \sum^T_{t1}([A]_{[i]_{t-1}} \space + [f_\theta ]_{[i]_t}, t)$$
-
+\\
 **BiLSTM-CRF模型架构4**
 ![BiLSTM-CRF模型架构](http://p71cwk72x.bkt.clouddn.com/18-5-19/22249423.jpg)
-
+\\
 #### 四、总结
-
+\\
 笔者使用BiLSTM-CRF模型做中文分词试验准确率达到96.1%，badcase中由很多歧义性词语，比如海运业等词，这类词笔者任务还是仁者见仁了，分词不存在完美标准。
 ```
 海运业分成:  海运   业
 造船业分成:  造船  业
 感动了四乡八镇分成:  感动  了  四  乡  八   镇
 ```
-
+\\
 接下来尝试的改进方向:1、模型引入自定义词表功能，凭借该词词频大小控制其是否分割；2、使用预训练的词向量；3、与GRU模型做对比两模型训练速度和分割性能。
