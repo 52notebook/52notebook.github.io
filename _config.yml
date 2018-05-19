@@ -63,7 +63,7 @@ permalink:   /:categories/:title/
 
 # Amount of post to show on home page
 paginate: 2
-paginate_path: "/blog/page:num/"
+paginate_path: "/page:num/"
 
 kramdown:
   input: GFM
