@@ -35,6 +35,14 @@ tags: [LSTM, RNN, BiLSTM, CRF, 中文分词]
 **RNN图解**
 ![RNN模型](http://p71cwk72x.bkt.clouddn.com/18-5-19/65738414.jpg)
 
+\$$
+input \space gate: \space \space  i_t = \sigma(W^{(i)}xt +\space U^{i}h_{t-1})
+
+forget \space gate: \space \space f_t= \sigma(W^{f}x_t \space + U^{f}h_{t-1})
+
+$$
+
+
 LSTM模型是RNN的一种变种，它是把RNN模型隐藏层状态的更新替换成使用特定结构的记忆单元的处理。结果，LSTM模型能更好地处理长时依赖问题。
 
 
