@@ -38,7 +38,7 @@ tags: [LSTM, RNN, BiLSTM, CRF, 中文分词]
 $$
 \begin{align*}
 input \space gate: \space \space  i_t = \sigma(W^{(i)}xt +\space U^{i}h_{t-1})
-
+\\
 forget \space gate: \space \space f_t= \sigma(W^{f}x_t \space + U^{f}h_{t-1})
 \end{align*}
 $$
