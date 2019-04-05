@@ -2,7 +2,7 @@
 layout: post
 title:  introduction to conditional random fields
 description: "以POS词性标注任务阐述CRF，从模型训练到推理逐层深入，读完帮助理解CRF可以做什么以及是怎么做的。CRF是最大熵在sequence上的扩展，也是HMM conditional的求解。"
-modified: 2018-02-14T17:00:45-04:00
+modified: 2019-04-04T17:00:45-04:00
 tags: [CRF, POS, 词性标注]
 ---
 
