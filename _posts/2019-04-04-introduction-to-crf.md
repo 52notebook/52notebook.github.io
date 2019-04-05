@@ -178,15 +178,21 @@ HMM是什么，他也可以做序列标注，比如POS词性标注任务等。�
 
 CRF要比HMM强大的多，HMM能建模的CRF均可而且HMM不能建模的CRF仍可以。
 
-HMM对数概率 $$log P(l,s) = log P(l_0 ) + \sum_i log P(l_i|l_{i-1}) + \sum_I log P(w_i|l_i)$$
+HMM对数概率 
+$$
+log P(l,s) = log P(l_0 ) + \sum_i log P(l_i|l_{i-1}) + \sum_I log P(w_i|l_i)
+$$
 
- 上面公式，如果我们把对数概率看成是附带权重的转移和发射指示特征函数时，那么就是CRF对数线上形式了。
+上面公式，如果我们把对数概率看成是附带权重的转移和发射指示特征函数时，那么就是CRF对数线上形式了。
 
 总之，我们能够通过下面方式把CRF转成HMM，主要是根据转移矩阵和发射矩阵改成特征函数。方式如下:
 
+
 - 对于HMM的转移概率 $$P(l_i=y|l_{i-1} = x)$$，要为CRF定义如下样子的特征函数$$f_{xy}( s, i, l_i, l_{i-1}) = 1$$ 如果$$l_i =y   $$且$$l_{i-1} = x$$ ,并且为每个特征函数赋如下的权重 $$w_{xy} = log P(l_i = y|l_{i_1} = x)$$
 
-- 对于HMM发射概率矩阵$$P(w_i=z|l_i=x)$$，对应定义CRF的"发射特殊函数"，形如$$g_{xy}(s,i,l_i,l_{i-1}) = 1$$， 如果$$w_i=z$$ 并且$$l_i = x$$。与之对应的每个特征函数的权重$$w_{x,z} = log P(w_i=z|l_i=x)$$
+$$P(w_i=z|l_i=x)$$
+
+- 对于HMM发射概率矩阵 $$P(w_i=z|l_i=x)$$，对应定义CRF的"发射特殊函数"，形如$$g_{xy}(s,i,l_i,l_{i-1}) = 1$$， 如果$$w_i=z$$ 并且$$l_i = x$$。与之对应的每个特征函数的权重$$w_{x,z} = log P(w_i=z|l_i=x)$$
 
 ##### 9.2.1 比HMM高明处
 
@@ -194,7 +200,9 @@ HMM对数概率 $$log P(l,s) = log P(l_0 ) + \sum_i log P(l_i|l_{i-1}) + \sum_I 
 
     HMM带有天然的局部属性，比如它受转移矩阵和发射矩阵的约束，**强制约束每个词只能依赖当前标签，并且当前标签只能依赖前一个标签(状态)；CRF能够利用全局标签**。
 
-- CRF能够为特征函数赋予任意大小的权重值。而HMM的必须满足统计概率约束，即$$\sum_wP(w_i=w|l_1)=1$$
+- CRF能够为特征函数赋予任意大小的权重值。而HMM的必须满足统计概率约束，即$$\sum_w P(w_i=w|l_1)=1$$
+
 
 [Ref](http://blog.echen.me/2012/01/03/introduction-to-conditional-random-fields/)
+
 [Ref](https://gist.github.com/wut0n9/e6132d1d4195d08410e2aa303cf5a3f4)
