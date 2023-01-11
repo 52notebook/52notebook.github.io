@@ -1,6 +1,6 @@
 #theme: jekyll-theme-cayman
 
-title:            February
+title:            Late
 description:      Describe your website here.
 # for comments
 disqus_shortname: 52notebook
@@ -16,10 +16,10 @@ url:    ""
 
 # Owner/author information
 owner:
-  name:           February
+  name:           Late
   avatar:         avatar.jpg
-  bio:            "润无声"
-#  email:          you@email.com
+  bio:            "擅长自然语言处理、语音合成、智能问答系统、深度学习"
+  email:          lys218@126.com
   # Social networking links used in footer. Update and remove as you like.
 #  twitter:        
 #  facebook:       
