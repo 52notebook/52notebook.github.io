@@ -182,7 +182,7 @@ curl localhost:18002/metrics
 
 # TensorRT-LLM模型编译不同参数配置推理性能调优
 
-```Shell
+```shell
 #Build the Qwen-14B-Chat model using a single GPU and apply INT4 weight-only quantization.
 python3 convert_checkpoint.py --model_dir /models/Qwen2-14B-Instruct/   \
                               --output_dir /engines/middle/Qwen2-14B-Instruct-Int4/  \
@@ -315,7 +315,7 @@ python3 /tensorrtllm_backend/tools/inflight_batcher_llm/benchmark_core_model.py 
 
 英伟达自构建的Triton容器内genai-perf版本较老，可能会无法执行评估任务。升级版本：
 
-```Shell
+```shell
 #https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/perf_analyzer/genai-perf/README.html
 pip install git+https://github.com/triton-inference-server/perf_analyzer.git#subdirectory=genai-perf
 genai-perf \
