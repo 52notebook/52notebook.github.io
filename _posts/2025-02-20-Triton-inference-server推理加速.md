@@ -36,6 +36,7 @@ Table of Contents
    * [使用Triton CLI部署模型](#使用triton-cli部署模型)
       * [triton 客户端安装](#triton-客户端安装)
       * [triton模型转换](#triton模型转换)
+* [引用](#引用)
 
 # 背景
 
@@ -53,7 +54,7 @@ TensorRT-Backend的角色是让你使用Triton-Inference-Server部署TensorRT-LL
 
 # TensorRT-LLM容器
 
-```Plain
+```shell
 docker pull nvcr.io/nvidia/tritonserver:24.10-trtllm-python-py3
 ```
 
@@ -61,7 +62,7 @@ docker pull nvcr.io/nvidia/tritonserver:24.10-trtllm-python-py3
 
 triton 24.10  版本与TensorRT-Backend 0.14.0 是对齐关系。
 
-```Plain
+```shell
 git clone -b v0.14.0 https://github.com/triton-inference-server/tensorrtllm_backend.git
 cd tensorrtllm_backend
 git submodule update --init --recursive
@@ -71,7 +72,7 @@ git submodule update --init --recursive
 
 # 启动TensorRT-LLM容器
 
-```Plain
+```shell
 docker run -itd --name triton-qwen \
 --net host \
 --shm-size=50g \
@@ -88,7 +89,7 @@ docker exec -it triton-qwen  /bin/bash
 
 # HF模型转成TensorRT-LLM格式
 
-```Plain
+```shell
 GPTQ Int4量化首先安装下auto-gptq包
 
 pip config set global.index-url https://mirrors.aliyun.com/pypi/simple
@@ -124,14 +125,14 @@ mpirun -n 2 --allow-run-as-root  python3 ../run.py --input_text "你好，请问
 
 ## 模型仓库model_repo准备
 
-```SQL
+```shell
 mkdir -p /triton_model_repo/Qwen2-14B-Instruct-Int4-2Gpu 
 cp -r /tensorrtllm_backend/all_models/inflight_batcher_llm/* /triton_model_repo/Qwen2-14B-Instruct-Int4-2Gpu 
 ```
 
 ## 模型配置
 
-```SQL
+```shell
 ENGINE_DIR=/engines/trt_engines/Qwen2-14B-Instruct-Int4/weight_only/2-gpu/
 TOKENIZER_DIR=/models/Qwen2-14B-Instruct/
 MODEL_FOLDER=/triton_model_repo/Qwen2-14B-Instruct-Int4-2Gpu 
@@ -151,7 +152,7 @@ python3 ${FILL_TEMPLATE_SCRIPT} -i ${MODEL_FOLDER}/tensorrt_llm_bls/config.pbtxt
 
 # Triton启动服务
 
-```SQL
+```shell
 # 'world_size' is the number of GPUs you want to use for serving. This should
 # be aligned with the number of GPUs used to build the TensorRT-LLM engine.
 python3 /tensorrtllm_backend/scripts/launch_triton_server.py --http_port=18000 --metrics_port=18002  --grpc_port=18001 --world_size=2 --model_repo=${MODEL_FOLDER}
@@ -161,7 +162,7 @@ python3 /tensorrtllm_backend/scripts/launch_triton_server.py --http_port=18000 -
 
 或使用tritonserver启动服务
 
-```SQL
+```shell
 -n 参数为 tp * pp
 
 mpirun -n 2 --allow-run-as-root  tritonserver   --http-port=18000 --metrics-port=18002  --grpc-port=18001  --model-repo=${MODEL_FOLDER}
@@ -169,13 +170,13 @@ mpirun -n 2 --allow-run-as-root  tritonserver   --http-port=18000 --metrics-port
 
 ## cURL验证服务
 
-```SQL
+```shell
 curl -X POST localhost:18000/v2/models/ensemble/generate -d '{"text_input": "你好，你叫什么名字", "max_tokens": 100, "bad_words": "", "stop_words": ""}'
 ```
 
 ## 运行指标状态查看
 
-```SQL
+```shell
 curl localhost:18002/metrics
 ```
 
@@ -256,7 +257,7 @@ mpirun -n 2 --allow-run-as-root  tritonserver   --http-port=18000 --metrics-port
 
 ## 使用Model Analyzer 分析模型性能
 
-```Plain
+```shell
 pip3 install triton-model-analyzer
 ```
 
@@ -264,13 +265,13 @@ pip3 install triton-model-analyzer
 
 生成具有输入正态分布的 I/O seqlen 令牌，mean_seqlen=128，stdev=10。输出正态分布，mean_seqlen=20，stdev=2。设置 stdev=0 以获得常数 seqlens。
 
-```SQL
+```shell
 python3 /tensorrtllm_backend/tools/inflight_batcher_llm/benchmark_core_model.py  --num-requests 500 --max-input-len 1024 -i grpc token-norm-dist --input-mean 256 --input-stdev 0 --output-mean 256 --output-stdev 0 
 ```
 
 性能指标输出结果
 
-```SQL
+```shell
 [INFO] Warm up for benchmarking.                                                                                                         
 [INFO] Start benchmarking on 500 prompts.                                                                                                
 [INFO] Total Latency: 12249.455 ms                                                                                                       
@@ -351,7 +352,7 @@ genai-perf \
 
 ### triton 客户端安装
 
-```Plain
+```shell
 # 查看最新版本号 https://github.com/triton-inference-server/triton_cli/releases
 
 GIT_REF=0.0.11
@@ -360,13 +361,13 @@ pip install git+https://github.com/triton-inference-server/triton_cli.git@${GIT_
 
 ### triton模型转换
 
-```SQL
+```shell
 ENGINE_DEST_PATH=/engines triton import -m llama-2-7B --backend tensorrtllm
 ```
 
 
 
-引用：
+# 引用：
 
 > HF模型Python Backend部署
 >
